@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod_starter/src/home/presentation/home_page.dart';
+import 'package:dark_todo_app/src/home/presentation/home_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../src/splash/presentation/pages/splash_page.dart';

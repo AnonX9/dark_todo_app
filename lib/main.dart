@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_starter/clients/connection_status_listener.dart';
-import 'package:flutter_riverpod_starter/clients/local_db.client.dart';
-import 'package:flutter_riverpod_starter/core/app_entry.dart';
-import 'package:flutter_riverpod_starter/logs/app_provider_observer.dart';
+import 'package:dark_todo_app/clients/connection_status_listener.dart';
+import 'package:dark_todo_app/clients/local_db.client.dart';
+import 'package:dark_todo_app/core/app_entry.dart';
+import 'package:dark_todo_app/logs/app_provider_observer.dart';
 import 'package:stack_trace/stack_trace.dart';
 
 import 'clients/talker.dart';
