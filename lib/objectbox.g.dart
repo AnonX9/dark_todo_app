@@ -15,35 +15,74 @@ import 'package:objectbox/internal.dart'
 import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
-import 'src/shared/domain/models/dafault_model.dart';
+import 'src/shared/domain/models/task.dart';
+import 'src/shared/domain/models/task_list.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(1, 2578327175502102250),
-      name: 'DefaultModel',
-      lastPropertyId: const obx_int.IdUid(3, 4843817099518807890),
+      id: const obx_int.IdUid(3, 6839937047947396888),
+      name: 'Task',
+      lastPropertyId: const obx_int.IdUid(4, 6556063826137589889),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 8468990447003306772),
+            id: const obx_int.IdUid(1, 6738045601659779710),
             name: 'id',
             type: 6,
-            flags: 129),
+            flags: 1),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 1997769091053939837),
-            name: 'name',
+            id: const obx_int.IdUid(2, 93999314361762150),
+            name: 'description',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 4843817099518807890),
-            name: 'age',
+            id: const obx_int.IdUid(3, 610519291477161450),
+            name: 'isCompleted',
+            type: 1,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(4, 6556063826137589889),
+            name: 'taskListId',
+            type: 11,
+            flags: 520,
+            indexId: const obx_int.IdUid(2, 1608586558820717682),
+            relationTarget: 'TaskList')
+      ],
+      relations: <obx_int.ModelRelation>[],
+      backlinks: <obx_int.ModelBacklink>[]),
+  obx_int.ModelEntity(
+      id: const obx_int.IdUid(4, 1010995534163559515),
+      name: 'TaskList',
+      lastPropertyId: const obx_int.IdUid(4, 184638572957533085),
+      flags: 0,
+      properties: <obx_int.ModelProperty>[
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(1, 2846290705775107241),
+            name: 'id',
             type: 6,
+            flags: 1),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(2, 2053476520218834224),
+            name: 'title',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(3, 4400846961917294528),
+            name: 'color',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(4, 184638572957533085),
+            name: 'pinned',
+            type: 1,
             flags: 0)
       ],
       relations: <obx_int.ModelRelation>[],
-      backlinks: <obx_int.ModelBacklink>[])
+      backlinks: <obx_int.ModelBacklink>[
+        obx_int.ModelBacklink(name: 'tasks', srcEntity: 'Task', srcField: '')
+      ])
 ];
 
 /// Shortcut for [Store.new] that passes [getObjectBoxModel] and for Flutter
@@ -81,46 +120,103 @@ Future<obx.Store> openStore(
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
       entities: _entities,
-      lastEntityId: const obx_int.IdUid(1, 2578327175502102250),
-      lastIndexId: const obx_int.IdUid(0, 0),
+      lastEntityId: const obx_int.IdUid(4, 1010995534163559515),
+      lastIndexId: const obx_int.IdUid(2, 1608586558820717682),
       lastRelationId: const obx_int.IdUid(0, 0),
       lastSequenceId: const obx_int.IdUid(0, 0),
-      retiredEntityUids: const [],
+      retiredEntityUids: const [3745041981200326771, 8562458852346708051],
       retiredIndexUids: const [],
-      retiredPropertyUids: const [],
+      retiredPropertyUids: const [
+        818868136042534293,
+        75542683437462839,
+        4061048941527842894,
+        7933590651614222519,
+        8209854821046810467,
+        8125718595765914041,
+        4040187712666778644
+      ],
       retiredRelationUids: const [],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
       version: 1);
 
   final bindings = <Type, obx_int.EntityDefinition>{
-    DefaultModel: obx_int.EntityDefinition<DefaultModel>(
+    Task: obx_int.EntityDefinition<Task>(
         model: _entities[0],
-        toOneRelations: (DefaultModel object) => [],
-        toManyRelations: (DefaultModel object) => {},
-        getId: (DefaultModel object) => object.id,
-        setId: (DefaultModel object, int id) {
+        toOneRelations: (Task object) => [object.taskList],
+        toManyRelations: (Task object) => {},
+        getId: (Task object) => object.id,
+        setId: (Task object, int id) {
           object.id = id;
         },
-        objectToFB: (DefaultModel object, fb.Builder fbb) {
-          final nameOffset = fbb.writeString(object.name);
-          fbb.startTable(4);
+        objectToFB: (Task object, fb.Builder fbb) {
+          final descriptionOffset = fbb.writeString(object.description);
+          fbb.startTable(5);
           fbb.addInt64(0, object.id);
-          fbb.addOffset(1, nameOffset);
-          fbb.addInt64(2, object.age);
+          fbb.addOffset(1, descriptionOffset);
+          fbb.addBool(2, object.isCompleted);
+          fbb.addInt64(3, object.taskList.targetId);
           fbb.finish(fbb.endTable());
           return object.id;
         },
         objectFromFB: (obx.Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
-          final nameParam = const fb.StringReader(asciiOptimization: true)
+          final descriptionParam =
+              const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 6, '');
+          final idParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          final isCompletedParam =
+              const fb.BoolReader().vTableGet(buffer, rootOffset, 8, false);
+          final object = Task(descriptionParam,
+              id: idParam, isCompleted: isCompletedParam);
+          object.taskList.targetId =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0);
+          object.taskList.attach(store);
+          return object;
+        }),
+    TaskList: obx_int.EntityDefinition<TaskList>(
+        model: _entities[1],
+        toOneRelations: (TaskList object) => [],
+        toManyRelations: (TaskList object) => {
+              obx_int.RelInfo<Task>.toOneBacklink(
+                      4, object.id, (Task srcObject) => srcObject.taskList):
+                  object.tasks
+            },
+        getId: (TaskList object) => object.id,
+        setId: (TaskList object, int id) {
+          object.id = id;
+        },
+        objectToFB: (TaskList object, fb.Builder fbb) {
+          final titleOffset = fbb.writeString(object.title);
+          final colorOffset = fbb.writeString(object.color);
+          fbb.startTable(5);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, titleOffset);
+          fbb.addOffset(2, colorOffset);
+          fbb.addBool(3, object.pinned);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (obx.Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final titleParam = const fb.StringReader(asciiOptimization: true)
               .vTableGet(buffer, rootOffset, 6, '');
-          final ageParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0);
-          final object = DefaultModel(name: nameParam, age: ageParam)
-            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
-
+          final colorParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 8, '');
+          final idParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          final pinnedParam =
+              const fb.BoolReader().vTableGet(buffer, rootOffset, 10, false);
+          final object = TaskList(titleParam, colorParam,
+              id: idParam, pinned: pinnedParam);
+          obx_int.InternalToManyAccess.setRelInfo<TaskList>(
+              object.tasks,
+              store,
+              obx_int.RelInfo<Task>.toOneBacklink(
+                  4, object.id, (Task srcObject) => srcObject.taskList));
           return object;
         })
   };
@@ -128,17 +224,42 @@ obx_int.ModelDefinition getObjectBoxModel() {
   return obx_int.ModelDefinition(model, bindings);
 }
 
-/// [DefaultModel] entity fields to define ObjectBox queries.
-class DefaultModel_ {
-  /// see [DefaultModel.id]
+/// [Task] entity fields to define ObjectBox queries.
+class Task_ {
+  /// see [Task.id]
+  static final id = obx.QueryIntegerProperty<Task>(_entities[0].properties[0]);
+
+  /// see [Task.description]
+  static final description =
+      obx.QueryStringProperty<Task>(_entities[0].properties[1]);
+
+  /// see [Task.isCompleted]
+  static final isCompleted =
+      obx.QueryBooleanProperty<Task>(_entities[0].properties[2]);
+
+  /// see [Task.taskList]
+  static final taskList =
+      obx.QueryRelationToOne<Task, TaskList>(_entities[0].properties[3]);
+}
+
+/// [TaskList] entity fields to define ObjectBox queries.
+class TaskList_ {
+  /// see [TaskList.id]
   static final id =
-      obx.QueryIntegerProperty<DefaultModel>(_entities[0].properties[0]);
+      obx.QueryIntegerProperty<TaskList>(_entities[1].properties[0]);
 
-  /// see [DefaultModel.name]
-  static final name =
-      obx.QueryStringProperty<DefaultModel>(_entities[0].properties[1]);
+  /// see [TaskList.title]
+  static final title =
+      obx.QueryStringProperty<TaskList>(_entities[1].properties[1]);
 
-  /// see [DefaultModel.age]
-  static final age =
-      obx.QueryIntegerProperty<DefaultModel>(_entities[0].properties[2]);
+  /// see [TaskList.color]
+  static final color =
+      obx.QueryStringProperty<TaskList>(_entities[1].properties[2]);
+
+  /// see [TaskList.pinned]
+  static final pinned =
+      obx.QueryBooleanProperty<TaskList>(_entities[1].properties[3]);
+
+  /// see [TaskList.tasks]
+  static final tasks = obx.QueryBacklinkToMany<Task, TaskList>(Task_.taskList);
 }
