@@ -4,39 +4,82 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:2578327175502102250",
-      "lastPropertyId": "3:4843817099518807890",
-      "name": "DefaultModel",
+      "id": "3:6839937047947396888",
+      "lastPropertyId": "4:6556063826137589889",
+      "name": "Task",
       "properties": [
         {
-          "id": "1:8468990447003306772",
+          "id": "1:6738045601659779710",
           "name": "id",
           "type": 6,
-          "flags": 129
+          "flags": 1
         },
         {
-          "id": "2:1997769091053939837",
-          "name": "name",
+          "id": "2:93999314361762150",
+          "name": "description",
           "type": 9
         },
         {
-          "id": "3:4843817099518807890",
-          "name": "age",
-          "type": 6
+          "id": "3:610519291477161450",
+          "name": "isCompleted",
+          "type": 1
+        },
+        {
+          "id": "4:6556063826137589889",
+          "name": "taskListId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "2:1608586558820717682",
+          "relationTarget": "TaskList"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:1010995534163559515",
+      "lastPropertyId": "3:4400846961917294528",
+      "name": "TaskList",
+      "properties": [
+        {
+          "id": "1:2846290705775107241",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2053476520218834224",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "3:4400846961917294528",
+          "name": "color",
+          "type": 9
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:2578327175502102250",
-  "lastIndexId": "0:0",
+  "lastEntityId": "4:1010995534163559515",
+  "lastIndexId": "2:1608586558820717682",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
-  "retiredEntityUids": [],
+  "retiredEntityUids": [
+    3745041981200326771,
+    8562458852346708051
+  ],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    818868136042534293,
+    75542683437462839,
+    4061048941527842894,
+    7933590651614222519,
+    8209854821046810467,
+    8125718595765914041,
+    4040187712666778644
+  ],
   "retiredRelationUids": [],
   "version": 1
 }
