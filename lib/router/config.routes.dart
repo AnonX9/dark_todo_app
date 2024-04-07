@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dark_todo_app/src/home/presentation/home_page.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../src/splash/presentation/pages/splash_page.dart';
@@ -13,7 +13,7 @@ class HomeRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return CounterApp();
+    return HomePage();
   }
 }
 
