@@ -1,40 +1,52 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_starter/src/home/presentation/providers/counter_provider.dart';
+import 'package:flutter_riverpod_starter/utils/sizer/sizer.dart';
 
 class CounterApp extends ConsumerWidget {
   const CounterApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final counterNotifier = ref.watch(counterProvider);
-    final counter = counterNotifier.counter;
-
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('counterAppTitle'.tr()),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(plural('pushedBtnText', 0), textAlign: TextAlign.center),
-            Text(
-              '${counter}',
-              style: Theme.of(context).textTheme.headlineMedium,
+        backgroundColor: Colors.transparent,
+        title: Text(
+          "All Task",
+        ),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.menu_open_rounded,
+              size: 24.sp,
             ),
-          ],
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: IconButton.filledTonal(
+              onPressed: () {},
+              icon: Icon(Icons.search_rounded),
+              iconSize: 20.sp,
+            ),
+          ),
+        ],
+      ),
+      body: Container(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add_rounded, size: 28.sp),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(100),
+            topRight: Radius.circular(100),
+            bottomLeft: Radius.circular(100),
+            bottomRight: Radius.circular(25),
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          counterNotifier.incrementCounter();
-        },
-        tooltip: 'tooltip'.tr(),
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

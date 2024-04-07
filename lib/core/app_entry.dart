@@ -21,10 +21,11 @@ class AppEntry extends ConsumerWidget {
     return Sizer(
       builder: (context, orientation, deviceType) => MaterialApp.router(
         routerConfig: router,
-        title: 'Flutter Demo',
+        title: 'Modern Todo App',
         theme: lightTheme,
         darkTheme: darkTheme,
         scaffoldMessengerKey: networkSnackbarKey,
+        debugShowCheckedModeBanner: false,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
