@@ -165,12 +165,10 @@ obx_int.ModelDefinition getObjectBoxModel() {
           final descriptionParam =
               const fb.StringReader(asciiOptimization: true)
                   .vTableGet(buffer, rootOffset, 6, '');
-          final idParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
           final isCompletedParam =
               const fb.BoolReader().vTableGet(buffer, rootOffset, 8, false);
-          final object = Task(descriptionParam,
-              id: idParam, isCompleted: isCompletedParam);
+          final object = Task(descriptionParam, isCompleted: isCompletedParam)
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
           object.taskList.targetId =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0);
           object.taskList.attach(store);
@@ -206,12 +204,10 @@ obx_int.ModelDefinition getObjectBoxModel() {
               .vTableGet(buffer, rootOffset, 6, '');
           final colorParam = const fb.StringReader(asciiOptimization: true)
               .vTableGet(buffer, rootOffset, 8, '');
-          final idParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
           final pinnedParam =
               const fb.BoolReader().vTableGet(buffer, rootOffset, 10, false);
-          final object = TaskList(titleParam, colorParam,
-              id: idParam, pinned: pinnedParam);
+          final object = TaskList(titleParam, colorParam, pinned: pinnedParam)
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
           obx_int.InternalToManyAccess.setRelInfo<TaskList>(
               object.tasks,
               store,

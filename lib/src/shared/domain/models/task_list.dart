@@ -13,11 +13,10 @@ class TaskList {
   @Backlink()
   final tasks = ToMany<Task>();
 
-  TaskList(this.title, this.color, {int id = 0, this.pinned = false});
+  TaskList(this.title, this.color, {this.pinned = false});
 
   TaskList copyWith({int? id, String? title, String? color, bool? pinned}) {
     return TaskList(
-      id: id ?? this.id,
       pinned: pinned ?? this.pinned,
       title ?? this.title,
       color ?? this.title,

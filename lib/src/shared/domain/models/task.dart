@@ -11,12 +11,11 @@ class Task {
 
   final taskList = ToOne<TaskList>();
 
-  Task(this.description, {this.id = 0, this.isCompleted = false});
+  Task(this.description, {this.isCompleted = false});
 
   Task copyWith({String? description, int? id, bool? isCompleted}) {
     return Task(
       description ?? this.description,
-      id: id ?? this.id,
       isCompleted: isCompleted ?? this.isCompleted,
     );
   }
