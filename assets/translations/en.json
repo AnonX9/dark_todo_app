@@ -1,5 +1,10 @@
 {
-  "counterAppTitle": "Counter",
-  "pushedBtnText": "You pushed the button this many time :",
-  "tooltip": "tooltip"
+  "//comment1": "Home Translations",
+  "title" : "All Task",
+  "tooltip" : "Add a task/list",
+
+  "//comment2": "Empty View Translations",
+  "empty_semantic_label" : "Warning Illustration",
+  "no_list_title" : "There is no list",
+  "add_list_hint" : "Press + to add a List"
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod_starter/utils/extensions/app_extensions.dart';
 import 'package:flutter_riverpod_starter/utils/sizer/sizer.dart';
@@ -17,18 +18,18 @@ class EmptyView extends StatelessWidget {
           children: [
             SvgPicture.asset(
               "assets/img/empty.svg",
-              semanticsLabel: "Warning Illustration",
+              semanticsLabel: tr("empty_semantic_label"),
               width: 60.w,
             ),
             Padding(
               padding: EdgeInsets.all(5.sp),
               child: Text(
-                "There is no list",
+                "no_list_title".tr(),
                 style: textTheme.titleMedium,
               ),
             ),
             Text(
-              "Press + to add a List",
+              "add_list_hint".tr(),
               style: textTheme.labelSmall?.copyWith(color: Colors.white54),
             ),
             100.height

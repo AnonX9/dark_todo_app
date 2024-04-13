@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_starter/src/home/presentation/empty_view.dart';
@@ -12,7 +13,7 @@ class CounterApp extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Text(
-          "All Task",
+          "title".tr(),
         ),
         leading: Padding(
           padding: EdgeInsets.only(left: 15.sp),
@@ -38,6 +39,7 @@ class CounterApp extends ConsumerWidget {
       body: EmptyView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
+        tooltip: "tooltip".tr(),
         child: Icon(Icons.add_rounded, size: 28.sp),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
