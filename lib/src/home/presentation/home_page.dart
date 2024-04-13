@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod_starter/src/home/presentation/empty_view.dart';
 import 'package:flutter_riverpod_starter/utils/sizer/sizer.dart';
 
 class CounterApp extends ConsumerWidget {
@@ -14,7 +15,7 @@ class CounterApp extends ConsumerWidget {
           "All Task",
         ),
         leading: Padding(
-          padding: const EdgeInsets.only(left: 15),
+          padding: EdgeInsets.only(left: 15.sp),
           child: IconButton(
             onPressed: () {},
             icon: Icon(
@@ -25,7 +26,7 @@ class CounterApp extends ConsumerWidget {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 15),
+            padding: EdgeInsets.only(right: 15.sp),
             child: IconButton.filledTonal(
               onPressed: () {},
               icon: Icon(Icons.search_rounded),
@@ -34,7 +35,7 @@ class CounterApp extends ConsumerWidget {
           ),
         ],
       ),
-      body: Container(),
+      body: EmptyView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add_rounded, size: 28.sp),
