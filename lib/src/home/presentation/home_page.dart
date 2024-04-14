@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_starter/src/home/presentation/empty_view.dart';
+import 'package:flutter_riverpod_starter/src/home/presentation/tasks_view.dart';
 import 'package:flutter_riverpod_starter/utils/sizer/sizer.dart';
 
 class CounterApp extends ConsumerWidget {
@@ -36,7 +36,7 @@ class CounterApp extends ConsumerWidget {
           ),
         ],
       ),
-      body: EmptyView(),
+      body: TasksView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: "tooltip".tr(),
