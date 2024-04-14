@@ -1,4 +1,4 @@
-package com.example.flutter_riverpod_starter
+package com.anonx9
 
 import io.flutter.embedding.android.FlutterActivity
 
