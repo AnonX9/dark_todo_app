@@ -31,6 +31,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   easy_localization: ^3.0.5
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +51,7 @@ flutter:
 
   assets:
     - assets/translations/
+    - assets/img/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
